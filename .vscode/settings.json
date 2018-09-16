@@ -1,0 +1,26 @@
+{
+  "files.autoSaveDelay": 1100,
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "window.zoomLevel": 0,
+  "editor.wordWrap": "on",
+  "editor.parameterHints.enabled": false,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.scrollback": 3000,
+  "editor.formatOnSave": "true",
+  "editor.renderWhitespace": "all",
+
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.startupEditor": "newUntitledFile",
+
+  "explorer.confirmDelete": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  }
+}
