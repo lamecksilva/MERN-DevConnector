@@ -8,7 +8,7 @@ const opts = {};      // Object containing the options to control how the token 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();     // Create a new extractor with the header bearer
 opts.secretOrKey = keys.secretOrKey;                        // Pass a public key for verifying token's signature
 
-module.exports = (passport) => {
+module.exports = (passport) => {        // Middleware that checks if the user exists in database
   passport.use(new JwtStrategy(opts, (jwt_payload, done)=> {
     User.findById(jwt_payload.id)   // Search for the user with the id in the payload
       .then(user => {

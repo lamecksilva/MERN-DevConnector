@@ -77,7 +77,7 @@ router.post('/login',(req,res)=>{
             } // Create JWT payload
 
             // Sign Token
-            jwt.sign(
+            jwt.sign(        // When user log in, the backend creates a signed token and returns it in response
               payload,
               keys.secretOrKey,
               { expiresIn: 3600 },
@@ -102,6 +102,6 @@ router.post('/login',(req,res)=>{
 router.get('/current',passport.authenticate('jwt',{session: false}), (req,res)=>{
   res.json({msg: 'Success'});
 });
-
+// Passport allows an option to store the user object in the request instead of the session
 
 module.exports = router;
