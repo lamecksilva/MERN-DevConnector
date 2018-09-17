@@ -12,7 +12,7 @@
   "editor.formatOnSave": "true",
   "editor.renderWhitespace": "all",
 
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.colorTheme": "Material Theme High Contrast",
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
 
