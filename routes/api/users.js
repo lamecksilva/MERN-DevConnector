@@ -14,7 +14,7 @@ const User = require('../../models/User');
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @Route   GET api/users/register
+// @Route   POST api/users/register
 // @desc    Register User
 // @access  Public
 router.post('/register',(req, res)=>{
@@ -50,7 +50,7 @@ router.post('/register',(req, res)=>{
     })
 });
 
-// @Route   GET api/users/login
+// @Route   POST api/users/login
 // @desc    Login User /  Returning JWT Token
 // @access  Public
 router.post('/login',(req,res)=>{
@@ -99,8 +99,13 @@ router.post('/login',(req,res)=>{
 // @Route   GET api/users/current
 // @desc    Return current user
 // @access  Private
-router.get('/current',passport.authenticate('jwt',{session: false}), (req,res)=>{
-  res.json({msg: 'Success'});
+router.get('/current',passport.authenticate('jwt',{session: false}), 
+(req,res)=>{
+  res.json({
+    id: req.user.id,
+    name: req.user.name,
+    email: req.user.email
+  });
 });
 // Passport allows an option to store the user object in the request instead of the session
 
