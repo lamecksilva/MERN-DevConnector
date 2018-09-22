@@ -17,7 +17,7 @@ const User = require("../../models/User");
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "Profile Works" }));
 
-// @Route   GET api/profile/:id
+// @Route   GET api/profile
 // @desc    Get current users profile
 // @access  Private
 router.get(
@@ -40,7 +40,68 @@ router.get(
   }
 );
 
-// @Route   POST api/profile/:id
+// @Route   GET api/profile/all
+// @desc    get all profiles
+// @access  Public
+router.get("/all", (req, res) => {
+  const errors = {};
+
+  Profile.find()
+    .populate("user", ["name", "avatar"])
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofiles = "There are no profiles";
+        return res.status(404).json(errors);
+      }
+
+      res.json(profiles);
+    })
+    .catch(err => res.status(404).json({ profiles: "There no profiles" }));
+});
+
+// @Route   GET api/profile/handle/:handle
+// @desc    get profle by handle
+// @access  Public
+
+router.get("/handle/:handle", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["name", "avatar"])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = "There is no profile for this user";
+        res.status(400).json(errors);
+      }
+
+      res.json(profile);
+    })
+    .catch(err => res.status(404).json(err));
+});
+
+// @Route   GET api/profile/user/:user_id
+// @desc    get profle by user ID
+// @access  Public
+
+router.get("/user/:user_id", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["name", "avatar"])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = "There is no profile for this user";
+        res.status(400).json(errors);
+      }
+
+      res.json(profile);
+    })
+    .catch(err =>
+      res.status(404).json({ profile: "There is no profile for this user" })
+    );
+});
+
+// @Route   POST api/profile/
 // @desc    Create or Edit User profile
 // @access  Private
 router.post(
@@ -83,6 +144,7 @@ router.post(
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         // Update
+
         Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
