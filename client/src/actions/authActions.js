@@ -20,7 +20,7 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 // Login - Get User Token
-export const loginuser = userData => dispatch => {
+export const loginUser = userData => dispatch => {
   axios
     .post("/api/user/login", userData)
     .then(res => {
@@ -33,7 +33,7 @@ export const loginuser = userData => dispatch => {
       // Decode token to get user data
       const decoded = jwt_decode(token);
       // Set current user
-      dispatch(setCurrentUser(decoded))
+      dispatch(setCurrentUser(decoded));
     })
     .catch(err =>
       dispatch({
@@ -43,11 +43,10 @@ export const loginuser = userData => dispatch => {
     );
 };
 
-
 // Set logged in user
-export const setCurrentUser = (decode) => {
-  return{
+export const setCurrentUser = decoded => {
+  return {
     type: SET_CURRENT_USER,
     payload: decoded
-  }
-}
+  };
+};
