@@ -31,7 +31,7 @@ class Login extends Component {
     event.preventDefault();
 
     const userData = {
-      email: this.state.email,  
+      email: this.state.email,
       password: this.state.password
     };
 
@@ -42,7 +42,6 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
- 
   render() {
     const { errors } = this.state;
 
