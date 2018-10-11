@@ -87,7 +87,7 @@ class CreateProfile extends Component {
             placeholder="Facebook Profile URL"
             name="facebook"
             icon="fab fa-facebook"
-            value={this.state.twitter}
+            value={this.state.facebook}
             onChange={this.onChange}
             error={errors.facebook}
           />
@@ -127,6 +127,10 @@ class CreateProfile extends Component {
     const options = [
       { label: "* Select Professional Status", value: 0 },
       { label: "Developer", value: "Developer" },
+      {
+        label: "Junior Substitute Mason Assistant",
+        value: "Mason"
+      },
       { label: "Junior Developer", value: "Junior Developer" },
       { label: "Senior Developer", value: "Senior Developer" },
       { label: "Manager", value: "Manager" },

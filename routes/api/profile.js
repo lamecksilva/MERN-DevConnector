@@ -124,6 +124,7 @@ router.post(
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.company) profileFields.company = req.body.company;
+    if (req.body.location) profileFields.location = req.body.location;
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
