@@ -41,4 +41,4 @@ If give an error, install the nodemon, react-scripts, and try again
 **OBS: This social network was created only for development studies, we do not have any legal patent or dominion over the name of the project.
 If you have a problem with the name or something, contact me to resolve it.**
 
-[here]: https://lameck-devconnector.herokuapp.com/profiles
+[here]: https://lameck-devconnector.herokuapp.com
